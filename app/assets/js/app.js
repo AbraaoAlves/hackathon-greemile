@@ -1,12 +1,12 @@
 var App = {};
 
 (function(exports){
-    var urlTeams = "jiujitsuteam.com/teams.json";
     
     function ServiceData(){}
 
     ServiceData.prototype.teams = function (){
 
+        var urlTeams = "jiujitsuteam.com/teams.json";
         var r = new XMLHttpRequest();
         r.open("GET", urlTeams, true);
         r.send();
@@ -23,7 +23,6 @@ var App = {};
     exports.ServiceData = ServiceData;
 })(App);
 
-
 (function(exports){
-    
+
 })(App);
