@@ -43,11 +43,10 @@ var App = {};
 
     fillGrid.prototype.loadTest = function (){
         this.load([
-            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
-            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
-            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
-            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
-            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()}
+            {id: 1, nome:"Marcelo Silva", nickname:"ms",data:new Date()},
+            {id: 1, nome:"Abraão Alves", nickname:"aa",data:new Date()},
+            {id: 1, nome:"Juciel Almeida", nickname:"ja",data:new Date()},
+            {id: 1, nome:"Augusto Monteiro", nickname:"am",data:new Date()}
         ]);
     }
 
