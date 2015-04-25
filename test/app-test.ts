@@ -1,3 +1,0 @@
-///<reference path="..\app.ts" />
-
-
