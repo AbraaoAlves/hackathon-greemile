@@ -7,15 +7,6 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-	<header id="header">
-		<div class="row">
-			<div id="search-teams">
-				<form action="" role="form" method="" class="form">
-					<input type="search" name="search" class="form-input" id="input-search-teams" placeholder="#gmhackathon" required />
-				</form>
-			</div>
-		</div>
-	</header>
 	<section role="main" class="row">
 		<div class="row">
 			<section role="map" id="map">
@@ -23,14 +14,11 @@
 			</section>
 			<section role="teams" id="teams">
 				<script id="template-row" type="text/html">
-					<tr>
+					<tr data-id="{id}">
 						<td>{id}</td>
-						<td>{nome}</td>
+						<td>{name}</td>
 						<td>{nickname}</td>
-						<td>{data}</td>
-						<td>
-							<a href="#{id}" class="btn-default">Visualizar</a>
-						</td>
+						<td>{created_at}</td>
 					</tr>
 				</script>
 
@@ -40,37 +28,8 @@
 						<th>Nome</th>
 						<th>Nickname</th>
 						<th>Data</th>
-						<th>Actions</th>
 					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Escola de Jiu Jitsu</td>
-							<td>rej</td>
-							<td>25/04/2015</td>
-							<td>
-								<a href="#" class="btn-default">Visualizar</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Escola de Jiu Jitsu</td>
-							<td>rej</td>
-							<td>25/04/2015</td>
-							<td>
-								<a href="#" class="btn-default">Visualizar</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Escola de Jiu Jitsu</td>
-							<td>rej</td>
-							<td>25/04/2015</td>
-							<td>
-								<a href="#" class="btn-default">Visualizar</a>
-							</td>
-						</tr>
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</section>
 		</div>
@@ -78,18 +37,18 @@
 
 	<script src="assets/js/leaflet-src.js"></script>
 	<script>
-		// create a map in the "map" div, set the view to a given place and zoom
-		var map = L.map('map').setView([51.505, -0.09], 13);
+		// // create a map in the "map" div, set the view to a given place and zoom
+		// var map = L.map('map').setView([51.505, -0.09], 13);
 
-		// add an OpenStreetMap tile layer
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
+		// // add an OpenStreetMap tile layer
+		// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		//     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		// }).addTo(map);
 
-		// add a marker in the given location, attach some popup content to it and open the popup
-		L.marker([51.5, -0.09]).addTo(map)
-		    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-		    .openPopup();
+		// // add a marker in the given location, attach some popup content to it and open the popup
+		// L.marker([51.5, -0.09]).addTo(map)
+		//     .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+		//     .openPopup();
 	</script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
 </body>

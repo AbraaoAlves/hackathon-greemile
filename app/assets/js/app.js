@@ -3,24 +3,18 @@ var App = {};
 (function(exports){
     
     function ServiceData(){}
-
-    ServiceData.prototype.teams = function (){
-
-        var urlTeams = "jiujitsuteam.com/teams.json";
-        var r = new XMLHttpRequest();
-        r.open("GET", urlTeams, true);
-        r.send();
+    ServiceData.prototype.get = function (url, success){
+        var script = document.createElement('script');
+        script.src = url+"?callback=jsonp";
         
-        return {
-            done: function(cb){
-                r.onreadystatechange = function () {
-                      if (r.readyState != 4 || r.status != 200) return;
-                      cb(JSON.parse(r.responseText), {});
-                };
-            }
+        window.jsonp = function(request){
+            success(request);
+            document.body.removeChild(script);
+            delete window.jsonp;
         }
-    }   
-    exports.ServiceData = ServiceData;
+        document.body.appendChild(script);
+    }
+    exports.ServiceData = new ServiceData();
 })(App);
 
 
@@ -29,7 +23,8 @@ var App = {};
     function StringFormat (str, model){
         for(var prop in model){
             if(model.hasOwnProperty(prop)){
-                str = str.replace("{"+prop+"}", model[prop]); 
+                var regex = new RegExp("{"+prop+"}", "g");
+                str = str.replace(regex, model[prop]);
             }
         }
         
@@ -41,16 +36,13 @@ var App = {};
         this.templateRow = document.getElementById("template-row");
     }
 
-    fillGrid.prototype.loadTest = function (){
-        this.load([
-            {id: 1, nome:"Marcelo Silva", nickname:"ms",data:new Date()},
-            {id: 1, nome:"Abraão Alves", nickname:"aa",data:new Date()},
-            {id: 1, nome:"Juciel Almeida", nickname:"ja",data:new Date()},
-            {id: 1, nome:"Augusto Monteiro", nickname:"am",data:new Date()}
-        ]);
+    fillGrid.prototype.loadTeams = function (){
+        App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json", function(request){
+            App.FillGrid.load(request);    
+        });
     }
 
-    fillGrid.prototype.load = function (rows){
+    fillGrid.prototype.load = function(rows){
         var grid = this.el;
         var template = this.templateRow; 
         grid.innerHTML = "";
@@ -67,7 +59,14 @@ var App = {};
 //module start
 (function(){
     window.onload = function(){
-        debugger;
-        App.FillGrid.loadTest();
+        App.FillGrid.loadTeams();
+        
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        
     }
 })(App);
