@@ -39,6 +39,16 @@ var App = {};
     fillGrid.prototype.loadTeams = function (){
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json", function(request){
             App.FillGrid.load(request);    
+            var team = document.getElementsByClassName("team");
+            for(var i=0; i<team.length; i++){
+                team[i].addEventListener("click", loadTeam);
+            }
+        });
+    }
+    function loadTeam(){
+        var id = this.getAttribute("data-id");
+        App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams/"+id+".json", function(request){
+            
         });
     }
 
@@ -65,8 +75,7 @@ var App = {};
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        
+        }).addTo(map);       
     }
+    
 })(App);
