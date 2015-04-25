@@ -23,8 +23,19 @@ var App = {};
     exports.ServiceData = ServiceData;
 })(App);
 
+
 (function(exports){
     
+    function StringFormat (str, model){
+        for(var prop in model){
+            if(model.hasOwnProperty(prop)){
+                str = str.replace("{"+prop+"}", model[prop]); 
+            }
+        }
+        
+        return str;
+    }
+
     function fillGrid(){
         this.el = document.querySelector("#teams table tbody");
         this.templateRow = document.getElementById("template-row");
@@ -43,11 +54,11 @@ var App = {};
     fillGrid.prototype.load = function (rows){
         var grid = this.el;
         var template = this.templateRow; 
-        grid.innerHtml = "";
+        grid.innerHTML = "";
         
         rows.forEach(function(model){
             var row = template.innerText;
-            grid.innerHtml += row;
+            grid.innerHTML += StringFormat(row,model);
         });
     }
 

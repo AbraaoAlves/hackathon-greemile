@@ -23,15 +23,15 @@
 			</section>
 			<section role="teams" id="teams">
 				<script id="template-row" type="text/html">
-					`<tr>
-						<td>${model.id}</td>
-						<td>${model.nome}</td>
-						<td>${model.nickname}</td>
-						<td>${model.data}</td>
+					<tr>
+						<td>{id}</td>
+						<td>{nome}</td>
+						<td>{nickname}</td>
+						<td>{data}</td>
 						<td>
-							<a href="#${model.id}" class="btn-default">Visualizar</a>
+							<a href="#{id}" class="btn-default">Visualizar</a>
 						</td>
-					</tr>`
+					</tr>
 				</script>
 
 				<table class="table teams">
