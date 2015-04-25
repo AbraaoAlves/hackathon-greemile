@@ -1,4 +1,6 @@
-### Intalação
+### Use
+
+- Open app/index.html
 
 ###Requirements
 
