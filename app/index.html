@@ -22,6 +22,18 @@
 				<div id="map"></div>
 			</section>
 			<section role="teams" id="teams">
+				<script id="template-row" type="text/html">
+					`<tr>
+						<td>${model.id}</td>
+						<td>${model.nome}</td>
+						<td>${model.nickname}</td>
+						<td>${model.data}</td>
+						<td>
+							<a href="#${model.id}" class="btn-default">Visualizar</a>
+						</td>
+					</tr>`
+				</script>
+
 				<table class="table teams">
 					<thead>
 						<th>ID</th>
@@ -79,6 +91,7 @@
 		    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
 		    .openPopup();
 	</script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 </html>
 

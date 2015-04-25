@@ -15,7 +15,7 @@ var App = {};
             done: function(cb){
                 r.onreadystatechange = function () {
                       if (r.readyState != 4 || r.status != 200) return;
-                      cb(JSON.parse(r.responseText));
+                      cb(JSON.parse(r.responseText), {});
                 };
             }
         }
@@ -24,5 +24,40 @@ var App = {};
 })(App);
 
 (function(exports){
+    
+    function fillGrid(){
+        this.el = document.querySelector("#teams table tbody");
+        this.templateRow = document.getElementById("template-row");
+    }
 
+    fillGrid.prototype.loadTest = function (){
+        this.load([
+            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
+            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
+            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
+            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()},
+            {id: 1, nome:"asdasd", nickname:"asdsdasads",data:new Date()}
+        ]);
+    }
+
+    fillGrid.prototype.load = function (rows){
+        var grid = this.el;
+        var template = this.templateRow; 
+        grid.innerHtml = "";
+        
+        rows.forEach(function(model){
+            var row = template.innerText;
+            grid.innerHtml += row;
+        });
+    }
+
+    exports.FillGrid = new fillGrid();
+})(App);
+
+//module start
+(function(){
+    window.onload = function(){
+        debugger;
+        App.FillGrid.loadTest();
+    }
 })(App);
