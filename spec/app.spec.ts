@@ -1,14 +1,5 @@
-///<reference path="../app/assets/app.d.ts" />
+///<reference path="../app/app.ts" />
 ///<reference path="../typings/tsd.d.ts" />
-
-describe("asdasd", function(){
-    it("teste foo", function(){
-        var t = new teste();
-        t.foo();
-        expect(t.name).toEqual("asdasdasdasd");
-    });    
-});
-
 
 describe("dado um servicço de dados de team jiujtsu", function(){
     it("posso carregar todos os times ", function(cb){
