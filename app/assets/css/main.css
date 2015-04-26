@@ -121,16 +121,20 @@ section[role="main"] {
 }
 
 /* Alerts */
-.alert{
+.alert {
 	width: 100%;
 	display: table;
 }
-.alert.alert-info{
-	color: #012351;
-	background: rgb(0, 151, 229);
-	border: 1px solid rgb(0, 127, 182);
-	padding: 5px 10px;
+.alert.alert-info {
 	margin: 5px 0;
+	padding: 12px 10px;
+	color: #AB2424;
+	background: rgb(255, 181, 181);
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
