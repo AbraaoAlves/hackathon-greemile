@@ -1,4 +1,7 @@
-var App = {};
+var App = {},
+    map = L.map('map').setView([51.505, -0.09], 13),
+    markers = [],
+    latlng = [];
 
 (function(exports){
     
@@ -6,15 +9,29 @@ var App = {};
     ServiceData.prototype.get = function (url, success){
         var script = document.createElement('script');
         script.src = url+"?callback=jsonp";
-        
+        document.body.appendChild(script);
         window.jsonp = function(request){
             success(request);
             document.body.removeChild(script);
             delete window.jsonp;
         }
-        document.body.appendChild(script);
     }
     exports.ServiceData = new ServiceData();
+})(App);
+
+(function(exports){
+    function Alert(){
+        this.el = document.getElementById("alert");
+    }
+    Alert.prototype.inf = function(string){
+        this.el.innerHTML = string;
+        this.el.setAttribute("class", "alert alert-info");
+    }
+    Alert.prototype.hide = function(){
+        this.el.innerHTML = "";
+        this.el.setAttribute("class", "");
+    }
+    exports.Alert = new Alert();
 })(App);
 
 
@@ -62,11 +79,33 @@ var App = {};
     }
     function loadTeam(){
         var id = this.getAttribute("data-id");
+        for(x=0;x<markers.length;x++){
+            map.removeLayer(markers[x]);  
+        }
+        App.Alert.hide();
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams/"+id+".json", function(request){
-            console.log(request);
+            var places = request.places;
+            if(places.length > 0){
+                for(var i=0; i<places.length; i++){
+                    var gym = places[i].gym;
+                    teamMap(gym.lat, gym.lng, gym.address);
+                }
+            }else{
+                App.Alert.inf("Este time não possui escolas.");
+            }
+            var bounds = new L.LatLngBounds(latlng);
+            map.fitBounds(bounds);
         });
     }
-
+    function teamMap(lat, lng, address){
+        lat = parseFloat(lat);
+        lng = parseFloat(lng);
+        var marker = new L.marker([lat, lng]);
+            marker.bindPopup(address);
+            marker.addTo(map);
+        markers.push(marker);
+        latlng.push([lat, lng]);
+    }
     fillGrid.prototype.load = function(rows){
         var grid = this.el;
         var template = this.templateRow; 
@@ -85,12 +124,9 @@ var App = {};
 (function(){
     window.onload = function(){
         App.FillGrid.loadTeams();
-        
-        var map = L.map('map').setView([51.505, -0.09], 13);
-
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);       
+        }).addTo(map);
     }
     
 })(App);

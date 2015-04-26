@@ -87,7 +87,7 @@ section[role="main"] {
 
 .table {
 	width: 100%;
-	margin: 20px 0;
+	margin: 5px 0;
 }
 
 .table thead {
@@ -120,10 +120,19 @@ section[role="main"] {
 	text-align: center;
 }
 
-
-
-
-
+/* Alerts */
+.alert{
+	width: 100%;
+	display: table;
+}
+.alert.alert-info{
+	color: #012351;
+	background: rgb(0, 151, 229);
+	border: 1px solid rgb(0, 127, 182);
+	padding: 5px 10px;
+	margin: 5px 0;
+	box-sizing: border-box;
+}
 
 
 
