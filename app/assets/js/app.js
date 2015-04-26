@@ -23,8 +23,23 @@ var App = {};
     function StringFormat (str, model){
         for(var prop in model){
             if(model.hasOwnProperty(prop)){
-                var regex = new RegExp("{"+prop+"}", "g");
-                str = str.replace(regex, model[prop]);
+                if(prop == "created_at"){
+                    var date = new Date(model[prop]),
+                        dd = date.getDate(),
+                        mm = date.getMonth() + 1,
+                        yy = date.getFullYear();
+                    if(dd<10){
+                        dd='0'+dd;
+                    } 
+                    if(mm<10){
+                        mm='0'+mm;
+                    }        
+                    date = dd+"/"+mm+"/"+yy;             
+                    str = str.replace("{created_at}", date);
+                }else{
+                    var regex = new RegExp("{"+prop+"}", "g");
+                    str = str.replace(regex, model[prop]);
+                }
             }
         }
         
@@ -48,7 +63,7 @@ var App = {};
     function loadTeam(){
         var id = this.getAttribute("data-id");
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams/"+id+".json", function(request){
-            
+            console.log(request);
         });
     }
 
