@@ -88,7 +88,7 @@ var App = {},
             if(places.length > 0){
                 for(var i=0; i<places.length; i++){
                     var gym = places[i].gym;
-                    teamMap(gym.lat, gym.lng, gym.address);
+                    teamMap(gym.lat, gym.lng, gym.address, gym.description);
                 }
             }else{
                 App.Alert.inf("Este time não possui escolas.");
@@ -97,11 +97,17 @@ var App = {},
             map.fitBounds(bounds);
         });
     }
-    function teamMap(lat, lng, address){
+    function teamMap(lat, lng, address, description){
         lat = parseFloat(lat);
         lng = parseFloat(lng);
+        var popup = "";
+        if(description != ""){
+            popup = description+"<br /><b>"+address+"</b>"
+        }else{
+            popup = "<b>"+address+"</b>"
+        }
         var marker = new L.marker([lat, lng]);
-            marker.bindPopup(address);
+            marker.bindPopup(popup);
             marker.addTo(map);
         markers.push(marker);
         latlng.push([lat, lng]);
