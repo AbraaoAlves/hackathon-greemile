@@ -1,15 +1,4 @@
 
-
-class  teste{
-    name:string;
-    constructor(){
-        this.name = ""
-    }
-    foo(){
-        this.name = "asdasdasdasd";
-    }
-}
-
 class ServiceData{
     constructor(){
 

@@ -1,4 +1,4 @@
-///<reference path="../app/app.ts" />
+///<reference path="../app/assets/app.d.ts" />
 ///<reference path="../typings/tsd.d.ts" />
 
 describe("asdasd", function(){
