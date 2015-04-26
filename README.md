@@ -1,19 +1,19 @@
 ### Intalação
 
-##Compiler
-`npm install -g typescript`
 
-##Tests
-`npm install -g jasmine`
+#Set Envioriments
+ 1. Install nodejs
+ 2. execute this: `npm install -g typescript karma-cli`
+ 3. execute this: `npm install`
 
-##Puglin sublimetext3
+##For sublimetext3, install this plugin
 `https://github.com/Microsoft/TypeScript-Sublime-Plugin`
 
 ##Sulbime-build
-create file in Tools > BuildSystem > New Build System. Copy content file from ./resource/typescript.sublime-build
+create file in Tools > BuildSystem > New Build System. Shell_cmd value should be `gulp build`
 
 
-###Requirements
+###Solution Requirements 
 
  - Create a page with map and grid
  - Grid source is (jiujitsuteam.com/teams.json)[jiujitsuteam.com/teams.json]

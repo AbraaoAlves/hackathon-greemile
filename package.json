@@ -1,0 +1,34 @@
+{
+  "name": "hackathon-greemile",
+  "version": "1.0.0",
+  "description": "Equipe RangerVerde",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-shell": "^0.4.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-jasmine": "^0.3.5"
+  },
+  "scripts": {
+    "test": "karma start karma.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AbraaoAlves/hackathon-greemile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbraaoAlves/hackathon-greemile/issues"
+  },
+  "homepage": "https://github.com/AbraaoAlves/hackathon-greemile"
+}
