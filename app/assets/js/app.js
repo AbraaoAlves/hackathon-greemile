@@ -38,6 +38,13 @@ var App = {},
 (function(exports){
     
     function StringFormat (str, model){
+        // fix images directory
+        if (model["id"] >= 10) {
+            model["index"] = "0";
+        } else {
+            model["index"] = "00";
+        }
+
         for(var prop in model){
             if(model.hasOwnProperty(prop)){
                 if(prop == "created_at"){
