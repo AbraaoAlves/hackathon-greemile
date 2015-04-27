@@ -110,6 +110,13 @@ section[role="main"] {
 	background: #eee;
 	cursor: pointer;
 }
+.table tbody tr.active{
+	background: linear-gradient(#F2F2F2, #C2C2C2);
+	background: -moz-linear-gradient(#F2F2F2, #C2C2C2);
+	background: -webkit-linear-gradient(#F2F2F2, #C2C2C2);
+	background: -ms-linear-gradient(#F2F2F2, #C2C2C2);
+	background: -o-linear-gradient(#F2F2F2, #C2C2C2);
+}
 .table tbody tr td{
 	padding: 5px 0;
 }

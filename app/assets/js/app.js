@@ -77,12 +77,20 @@ var App = {},
             }
         });
     }
+    function teamActive(self){
+        var teams = document.getElementsByClassName("team");
+        for(var i=0; i<teams.length; i++){
+            teams[i].setAttribute("class", "team");
+        }
+        self.setAttribute("class", "team active");
+    }
     function loadTeam(){
         var id = this.getAttribute("data-id");
         for(x=0;x<markers.length;x++){
             map.removeLayer(markers[x]);  
         }
         App.Alert.hide();
+        teamActive(this);
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams/"+id+".json", function(request){
             var places = request.places;
             if(places.length > 0){
