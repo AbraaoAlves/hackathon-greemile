@@ -123,6 +123,8 @@ var App = {},
             var bounds = new L.LatLngBounds(latlng);
             map.fitBounds(bounds);
         });
+
+        return window.scroll(0, 0);
     }
     function teamMap(lat, lng, address, description){
         lat = parseFloat(lat);
