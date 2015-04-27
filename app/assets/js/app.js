@@ -72,21 +72,21 @@ var App = {},
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json", function(request){
             App.FillGrid.load(request);    
             var team = document.getElementsByClassName("team");
-            for(var i=0; i<team.length; i++){
+            for(var i = 0, len = team.length; i < len; i++){
                 team[i].addEventListener("click", loadTeam);
             }
         });
     }
     function teamActive(self){
         var teams = document.getElementsByClassName("team");
-        for(var i=0; i<teams.length; i++){
+        for(var i = 0, len = teams.length; i < len; i++){
             teams[i].setAttribute("class", "team");
         }
         self.setAttribute("class", "team active");
     }
     function loadTeam(){
         var id = this.getAttribute("data-id");
-        for(x=0;x<markers.length;x++){
+        for(var x = 0, len = markers.length; x < len; x++){
             map.removeLayer(markers[x]);  
         }
         App.Alert.hide();
@@ -94,7 +94,7 @@ var App = {},
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams/"+id+".json", function(request){
             var places = request.places;
             if(places.length > 0){
-                for(var i=0; i<places.length; i++){
+                for(var i = 0, len = places.length; i < len; i++){
                     var gym = places[i].gym;
                     teamMap(gym.lat, gym.lng, gym.address, gym.description);
                 }
