@@ -7,7 +7,7 @@ gulp.task("watch", function(){
 	gulp.watch(["app/*.ts", "spec/*.ts"], ["build"]);
 });
 
-gulp.task("dev", ["build"], shell.task(["karma start karma.config.js"]));
+gulp.task("dev", ["watch"], shell.task(["karma start karma.config.js"]));
 
 gulp.task("deploy", function(){
 	//TODO: impleents uglyfy js, css and html
@@ -15,4 +15,4 @@ gulp.task("deploy", function(){
 	//TODO: apply autoprefix
 });
 
-gulp.task("default", ["dev"]);
+gulp.task("default", ["build"]);

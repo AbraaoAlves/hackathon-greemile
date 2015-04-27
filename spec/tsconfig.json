@@ -3,7 +3,7 @@
 	    "noImplicitAny": false,
 	    "removeComments": true,
 	    "preserveConstEnums": true,
-	    "outDir": "spec/js",
+	    "out": "spec/js/spec.js",
 	    "sourceMap": true
 	}	
 }

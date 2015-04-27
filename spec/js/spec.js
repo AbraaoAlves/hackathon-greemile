@@ -18,6 +18,17 @@ var ServiceData = (function () {
     };
     return ServiceData;
 })();
+///<reference path="../app/app.ts" />
+///<reference path="../typings/tsd.d.ts" />
+describe("dado um servicço de dados de team jiujtsu", function () {
+    it("posso carregar todos os times ", function (cb) {
+        var service = new ServiceData();
+        service.teams().done(function (dados) {
+            expect(dados).toBeDefined();
+            cb();
+        });
+    });
+});
 var App;
 (function (App) {
     var Widget = (function () {
@@ -28,4 +39,12 @@ var App;
     })();
     App.Widget = Widget;
 })(App || (App = {}));
-//# sourceMappingURL=app.js.map
+///<reference path="../app/widget.ts" />
+///<reference path="../typings/tsd.d.ts" />
+describe("widgets tests", function () {
+    it("widget should have tbody element as property", function () {
+        var w = new App.Widget();
+        expect(w.el).toBeDefined();
+    });
+});
+//# sourceMappingURL=spec.js.map
