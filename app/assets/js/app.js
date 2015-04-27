@@ -1,14 +1,22 @@
 var App = {},
-    map = L.map('map').setView([-3.738961, -38.522406], 12),
+    map = L.map('map').setView([-3.738961, -38.522406], 10),
     markers = [],
-    latlng = [];
+    latlng = [],
+    per_page = 5,
+    current_page = 1;
 
 (function(exports){
     
     function ServiceData(){}
     ServiceData.prototype.get = function (url, success){
         var script = document.createElement('script');
-        script.src = url+"?callback=jsonp";
+        var parseUrl = document.createElement("a");
+            parseUrl.href = url;
+        if(parseUrl.search == ""){
+            script.src = url+"?callback=jsonp";
+        }else{
+            script.src = url+"&callback=jsonp";
+        }        
         document.body.appendChild(script);
         window.jsonp = function(request){
             success(request);
@@ -76,7 +84,7 @@ var App = {},
     }
 
     fillGrid.prototype.loadTeams = function (){
-        App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json", function(request){
+        App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json?per_page="+per_page+"&page="+current_page, function(request){
             App.FillGrid.load(request);    
             var team = document.getElementsByClassName("team");
             for(var i = 0, len = team.length; i < len; i++){
@@ -130,7 +138,7 @@ var App = {},
     fillGrid.prototype.load = function(rows){
         var grid = this.el;
         var template = this.templateRow; 
-        grid.innerHTML = "";
+        grid.innerHTML = grid.innerHTML;
         
         rows.forEach(function(model){
             var row = template.innerText;
