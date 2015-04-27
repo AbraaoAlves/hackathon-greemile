@@ -1,5 +1,5 @@
 var App = {},
-    map = L.map('map').setView([51.505, -0.09], 13),
+    map = L.map('map').setView([-3.738961, -38.522406], 12),
     markers = [],
     latlng = [];
 
