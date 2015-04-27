@@ -3,7 +3,8 @@ var App = {},
     markers = [],
     latlng = [],
     per_page = 5,
-    current_page = 1;
+    current_page = 1,
+    loading = false;
 
 (function(exports){
     
@@ -84,12 +85,15 @@ var App = {},
     }
 
     fillGrid.prototype.loadTeams = function (){
+        loading = true;
         App.ServiceData.get("http://jiujitsuteam.herokuapp.com/teams.json?per_page="+per_page+"&page="+current_page, function(request){
+            current_page += 1;
             App.FillGrid.load(request);    
             var team = document.getElementsByClassName("team");
             for(var i = 0, len = team.length; i < len; i++){
                 team[i].addEventListener("click", loadTeam);
             }
+            loading = false;
         });
     }
     function teamActive(self){
@@ -157,5 +161,14 @@ var App = {},
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
     }
-    
+    window.onscroll = function(e){
+        var windowHeight = window.innerHeight,
+            scrollHeight = window.document.body.scrollHeight,
+            scrollMax = scrollHeight - windowHeight,
+            scrollTop = window.document.body.scrollTop,
+            scrollMax20 = scrollMax - ((scrollMax * 20) / 100);
+        if(scrollTop >= scrollMax20 && loading == false){
+            App.FillGrid.loadTeams();
+        }
+    }
 })(App);
