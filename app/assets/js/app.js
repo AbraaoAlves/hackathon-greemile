@@ -81,6 +81,7 @@ var App;
 /// <reference path="alert.ts" />
 /// <reference path="stringFormat.ts" />
 /// <reference path="serviceData.ts" />
+/// <reference path="../../../typings/leaflet/leaflet.d.ts" />
 var App;
 (function (App) {
     var FillGridClass = (function () {
@@ -159,7 +160,7 @@ var App;
         else {
             popup = "<b>" + address + "</b>";
         }
-        var marker = new L.marker([lat, lng]);
+        var marker = L.marker([lat, lng]);
         marker.bindPopup(popup);
         marker.addTo(map);
         markers.push(marker);
@@ -167,7 +168,7 @@ var App;
     }
 })(App || (App = {}));
 /// <reference path="fillGrid.ts" />
-var L;
+/// <reference path="../../../typings/leaflet/leaflet.d.ts" />
 var map = L.map('map').setView([-3.738961, -38.522406], 10);
 var markers = [];
 var latlng = [];

@@ -1,7 +1,7 @@
 /// <reference path="fillGrid.ts" />
+/// <reference path="../../../typings/leaflet/leaflet.d.ts" />
 
 //initialize global variables
-var L :any;
 var map :any = L.map('map').setView([-3.738961, -38.522406], 10);
 var markers :Array<any> = [];
 var latlng :Array<any> = [];

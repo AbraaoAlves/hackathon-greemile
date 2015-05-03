@@ -2,8 +2,9 @@
 /// <reference path="stringFormat.ts" />
 /// <reference path="serviceData.ts" />
 
+/// <reference path="../../../typings/leaflet/leaflet.d.ts" />
+
 //global variables
-declare var L :any;
 declare var map :any;
 declare var markers :Array<any>;
 declare var latlng :Array<any>;
@@ -105,7 +106,8 @@ module App{
         }else{
             popup = "<b>"+address+"</b>"
         }
-        var marker = new L.marker([lat, lng]);
+        
+        var marker = L.marker([lat, lng]);
             marker.bindPopup(popup);
             marker.addTo(map);
         markers.push(marker);
