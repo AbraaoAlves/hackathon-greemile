@@ -1,7 +1,7 @@
 
 ##Set Envioriments
  1. Install (nodejs)[https://nodejs.org/download/]
- 2. execute: `npm install -g typescript karma-cli protector http-server`
+ 2. execute: `npm install -g typescript karma-cli protector`
  3. execute: `npm install`
 
 ## Tasks 
