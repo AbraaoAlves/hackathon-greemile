@@ -1,23 +1,11 @@
 var gulp = require('gulp');
-var shell = require('gulp-shell');
-var sequence = require('run-sequence');
-var exit = require('gulp-exit');
+var shell = require('shelljs');
 
-gulp.task('webdriver-start', shell.task('webdriver-manager start'));
-gulp.task('e2e',shell.task('protractor protractor.config.js'));
-
-//incomplete
-//gulp.task('e2e', function(cb){
-//	//TODO: check if webdriver is runnig 
-//	sequence(
-//		['webdriver-start', 'protractor-start'],
-//		function() {
-//	      gulp.src("").pipe(exit());
-//	      cb();
-//		}
-//	);
-//});
-
-gulp.task('watch-e2e', function(){
-	gulp.watch(['specs/*spec.js', 'app/assets/js/*.js'], ['e2e']);
+gulp.task('e2e', function (cb) {
+	shell.exec("http-server ./app/ -i", {silent:true, async:true});
+	shell.exec("webdriver-manager start", {silent:true,async:true});
+	
+	shell.exec("protractor protractor.config.js", function(code, output){
+		shell.exit(0);	
+	});
 });

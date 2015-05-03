@@ -1,10 +1,9 @@
 
 ##Set Envioriments
  1. Install nodejs
- 2. execute: `npm install -g typescript karma-cli protector`
+ 2. execute: `npm install -g typescript karma-cli protector http-server`
  3. execute: `npm install`
- 5. execute: `gulp e2e` to run end-to-end tests in "./specs" folder
- 4. execute: `gulp watch-2e2` for watch and run test end-to-end
+ 4. execute: `gulp e2e` to run end-to-end tests in "./specs" folder
 
 ##For sublimetext3, install this plugin
 `https://github.com/Microsoft/TypeScript-Sublime-Plugin`
