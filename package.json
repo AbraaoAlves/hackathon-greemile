@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AbraaoAlves/hackathon-greemile",
   "devDependencies": {
+    "browser-sync": "^2.6.10",
     "gulp": "^3.8.11",
     "gulp-exit": "0.0.2",
     "gulp-shell": "^0.4.1",

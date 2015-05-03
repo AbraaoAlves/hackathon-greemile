@@ -5,7 +5,11 @@
  3. execute: `npm install`
 
 ## Tasks 
- 1. `gulp e2e` to run end-to-end tests in "./specs" folder
+ 1. `gulp serve` to run app
+ 2. `gulp webdriver` to run protractor server
+ 3. `gulp e2e` to run end-to-end tests in "./specs" folder
+ 4. `gulp build` to compile sources [typescript, css, ...] 
+ 5. `gulp serve:e2e` to run end-to-end tests and watch files 
  
 ### IDE Recommended 
  	(\#VSCode)[code.visualstudio.com] (For Linux, Mac and Windows)

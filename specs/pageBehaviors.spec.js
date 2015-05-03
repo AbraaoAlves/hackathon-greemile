@@ -8,7 +8,7 @@ describe('index.html behaviors', function() {
     it('shoudl refresh map on click row', function(cb) {
 		$('#map').getInnerHtml().then(function  (initMapHtml) {
 			
-			$('tbody tr').click();
+			$('tbody tr:nth-child(1)').click();
     		browser.sleep(3000); //wait load data
 			
 			$('#map').getInnerHtml().then(function  (actualMapHtml) {
